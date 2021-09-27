@@ -78,19 +78,6 @@ class BreedSearchViewModel {
                 }
                 
                 self.breedResultViewModels = resultViewModels
-//
-//                // Load all images
-//                // TODO: potentially move the image loading logic?
-//                for breed in breeds {
-//                    networking.fetchImage(imageURL: breed.imageModel.url) { result in
-//                        switch result {
-//                        case .success(let image):
-//                            resultViewModels.append (BreedResultViewModel(name: breed.name, image: image))
-//                        case .failure(let error):
-//                            debugPrint(error)
-//                        }
-//                    }
-//                }
                 
                 
             case .failure(let error):
@@ -101,14 +88,4 @@ class BreedSearchViewModel {
             }
         }
     }
-    
-    
-    
-    
-    // Functions from the collectionview
-    
-    
-//    func loadedBreedResults(breedResults:[Breed]) {
-//
-//    }
 }

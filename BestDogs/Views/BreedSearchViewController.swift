@@ -20,10 +20,9 @@ class BreedSearchViewController: UIViewController {
     var breedSearchViewModel:BreedSearchViewModel?
     
     override func viewDidLoad() {
-        
-//        self.resultsCollectionView.register(BreedCollectionViewCell.self, forCellWithReuseIdentifier: BreedCollectionViewCell.cellID)
-        
+                
         self.setupViewModels()
+        super.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -31,6 +30,7 @@ class BreedSearchViewController: UIViewController {
 //        // TODO: auto search on launch for testing
 //        self.searchBar.text = "terrier"
 //        self.searchBarSearchButtonClicked(self.searchBar)
+        super.viewDidAppear(animated)
     }
     
     // Setup Functions

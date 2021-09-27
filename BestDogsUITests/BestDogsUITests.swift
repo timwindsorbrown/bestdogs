@@ -22,13 +22,20 @@ class BestDogsUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
+    func testLoadDataAndOpen() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        
+        let searchField = app.searchFields["Search for dog breed..."]
+        searchField.tap()
+        searchField.typeText("Terrier")
+        
+        app/*@START_MENU_TOKEN@*/.buttons["Search"]/*[[".keyboards",".buttons[\"search\"]",".buttons[\"Search\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.collectionViews.cells.firstMatch.tap()
+        
+        XCTAssert(app.staticTexts["Typical lifespan"].exists, "Detail view has opened.")   
     }
 
     func testLaunchPerformance() throws {

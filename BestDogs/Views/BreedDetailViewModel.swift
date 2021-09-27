@@ -32,23 +32,24 @@ class BreedDetailViewModel {
         self.lifespan = breed.lifeSpan
         self.originalBreeding = breed.bredFor
         
-        self.loadImage()
-    }
-    
-    
-    func loadImage() {
-        
         if self.image == nil {
             if let imageRef = imageRef {
-                let networking = Networking()
-                networking.fetchImage(imageRef: imageRef) { result in
-                    switch result {
-                    case .success(let image):
-                        self.image = image
-                    case .failure(let error):
-                        debugPrint(error)
-                    }
+                self.loadImage(imageRef: imageRef) { image in
+                    self.image = image
                 }
+            }
+        }
+    }
+    
+    func loadImage(imageRef:String, completion:@escaping((UIImage?)->())) {
+        let networking = Networking()
+        networking.fetchImage(imageRef: imageRef) { result in
+            switch result {
+            case .success(let image):
+                completion(image)
+            case .failure(let error):
+                debugPrint(error)
+                completion(nil)
             }
         }
     }
